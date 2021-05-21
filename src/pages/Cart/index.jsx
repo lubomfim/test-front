@@ -29,7 +29,7 @@ const Cart = () => {
 
             <div>
               <CardValues prices={prices} />
-              <Button text={bagData.buttonText} step="1" path="payment" />
+              <Button text={bagData.buttonText} step="1" path={`payment`} />
             </div>
           </React.Fragment>
         )}
