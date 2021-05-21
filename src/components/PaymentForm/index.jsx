@@ -1,7 +1,7 @@
 import { Inputs } from 'components/Inputs'
 import React from 'react'
 
-import { paymentData } from 'constants/data/containers/payment'
+import { paymentData } from 'constants/data/pages/payment'
 import * as S from './styled'
 
 export const PaymentForm = () => {

@@ -8,7 +8,6 @@ export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [prices, setPrices] = useState({})
-  const [step, setStep] = useState(0)
 
   useEffect(() => {
     const productsData = getProducts()
@@ -21,8 +20,6 @@ export const ProductsProvider = ({ children }) => {
   }, [])
 
   const store = {
-    setStep,
-    step,
     products,
     prices,
     isLoading

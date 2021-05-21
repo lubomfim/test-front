@@ -4,6 +4,7 @@ import { ProductsProvider } from 'contexts/checkout'
 
 import Cart from 'pages/Cart'
 import Payment from 'pages/Payment'
+import Paid from 'pages/Paid'
 
 const Routes = () => {
   return (
@@ -12,6 +13,7 @@ const Routes = () => {
         <ProductsProvider>
           <Route exact path="/checkout/cart" component={Cart} />
           <Route exact path="/checkout/payment" component={Payment} />
+          <Route exact path="/checkout/paid" component={Paid} />
           <Route exact path="/">
             <Redirect to="/checkout/cart" />
           </Route>

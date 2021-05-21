@@ -6,12 +6,12 @@ import { ContentWrapper } from 'components/ContentWrapper'
 import { Loader } from 'components/Loader'
 import { PaymentForm } from 'components/PaymentForm'
 import { Wrapper } from 'components/Wrapper'
-import { paymentData } from 'constants/data/containers/payment'
+import { paymentData } from 'constants/data/pages/payment'
 import { Button } from 'components/Buttons'
 import { Header } from 'components/Header'
 
 const Payment = () => {
-  const { isLoading, prices, products } = useProductsContext()
+  const { isLoading, prices } = useProductsContext()
 
   return (
     <React.Fragment>
@@ -25,7 +25,7 @@ const Payment = () => {
             </ContentWrapper>
 
             <CardValues prices={prices} />
-            <Button text={paymentData.buttonText} step="2" path="done" />
+            <Button text={paymentData.buttonText} step="2" path="paid" />
           </React.Fragment>
         </Wrapper>
       )}

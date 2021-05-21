@@ -10,13 +10,14 @@ export const CardProduct = ({
     imageObjects,
     priceSpecification: { price },
     onClick
-  }
+  },
+  hidePrice
 }) => {
   const productName = name.length > 65 ? name.split('-')[0] : name
 
   return (
     <S.CardProductItem>
-      <S.CardProductImgWrapper>
+      <S.CardProductImgWrapper hidePrice={hidePrice}>
         <S.CardProductSource
           media="(min-width: 650px)"
           srcSet={imageObjects[0].medium}
@@ -26,7 +27,7 @@ export const CardProduct = ({
       </S.CardProductImgWrapper>
       <S.CardProductText>
         <S.CardProductName>{productName}</S.CardProductName>
-        <S.CardProductPrice>{convertMoney(price)}</S.CardProductPrice>
+        {!hidePrice && <S.CardProductPrice>{convertMoney(price)}</S.CardProductPrice>}
       </S.CardProductText>
     </S.CardProductItem>
   )
@@ -39,5 +40,6 @@ CardProduct.propTypes = {
     priceSpecification: PropTypes.shape({
       price: PropTypes.number.isRequired
     })
-  })
+  }),
+  hidePrice: PropTypes.bool
 }

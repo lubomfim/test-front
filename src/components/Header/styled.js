@@ -5,7 +5,7 @@ import * as C from 'constants/styles/colors'
 
 export const Header = styled.header`
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 `
 
 export const HeaderList = styled.ul`

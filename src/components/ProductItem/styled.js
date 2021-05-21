@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import * as C from 'constants/styles/colors'
 import * as T from 'constants/styles/typography'
@@ -25,6 +25,18 @@ export const CardProductImgWrapper = styled.picture`
   min-width: 65px;
   min-height: 65px;
   margin-right: 11px;
+
+  @media (max-width: 600px) {
+    ${({ hidePrice }) =>
+      hidePrice
+        ? css`
+            min-width: 45px;
+            min-height: 45px;
+            width: 45px;
+            height: 45px;
+          `
+        : ''}
+  }
 `
 
 export const CardProductImg = styled.img`
@@ -46,10 +58,10 @@ export const CardProductText = styled.div`
 
 export const CardProductName = styled.p`
   ${T.BODY_TEXT_MEDIUM};
-  margin-bottom: 15px;
 `
 
 export const CardProductPrice = styled.p`
   ${T.TITLE_EXTRA_LARGE}
-  align-self: flex-end
+  align-self: flex-end;
+  margin-top: 15px;
 `

@@ -1,35 +1,35 @@
 import React from 'react'
 
-import { bagData } from 'constants/data/pages/cart'
-
+import { Header } from 'components/Header'
 import { Wrapper } from 'components/Wrapper'
 import { ContentWrapper } from 'components/ContentWrapper'
 import { Loader } from 'components/Loader'
 import { CardProduct } from 'components/ProductItem'
 import { CardValues } from 'components/CardValues'
-import { Button } from 'components/Buttons'
-import { Header } from 'components/Header'
 import { useProductsContext } from 'contexts/checkout'
 
-const Cart = () => {
+import { paidData } from 'constants/data/pages/paid'
+import { StatusPayment } from 'components/PaymentStatus'
+
+const Paid = () => {
   const { isLoading, prices, products } = useProductsContext()
 
   return (
     <React.Fragment>
-      <Header step={0} />
+      <Header step={2} />
       <Wrapper>
         {isLoading && <Loader />}
         {products.length > 0 && (
           <React.Fragment>
-            <ContentWrapper title={bagData.title}>
+            <StatusPayment status={'success'} />
+            <ContentWrapper title={paidData.titleProducts}>
               {products.map((el, index) => (
-                <CardProduct key={index} product={el.product} />
+                <CardProduct key={index} product={el.product} hidePrice={true} />
               ))}
             </ContentWrapper>
 
             <div>
               <CardValues prices={prices} />
-              <Button text={bagData.buttonText} step="1" path="payment" />
             </div>
           </React.Fragment>
         )}
@@ -38,4 +38,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default Paid
