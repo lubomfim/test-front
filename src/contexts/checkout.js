@@ -8,21 +8,33 @@ export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [prices, setPrices] = useState({})
+  const [isValidated, setIsValidated] = useState(false)
+  const [paymentInfo, setPaymentInfo] = useState({
+    cardName: '',
+    cardNumber: '',
+    cardDate: ''
+  })
 
   useEffect(() => {
-    const productsData = getProducts()
-    productsData.then((data) => {
-      const { shippingTotal, subTotal, total, discount } = data
-      setPrices({ shippingTotal, subTotal, total, discount })
-      setProducts(data.items)
-      setIsLoading(false)
-    })
+    const productsData = getProducts('5b15c4923100004a006f3c07')
+    productsData
+      .then((data) => {
+        const { shippingTotal, subTotal, total, discount } = data
+        setPrices({ shippingTotal, subTotal, total, discount })
+        setProducts(data.items)
+        setIsLoading(false)
+      })
+      .catch((err) => console.log(err))
   }, [])
 
   const store = {
     products,
     prices,
-    isLoading
+    isLoading,
+    isValidated,
+    setIsValidated,
+    setPaymentInfo,
+    paymentInfo
   }
 
   return <ProductsContext.Provider value={store}>{children}</ProductsContext.Provider>
