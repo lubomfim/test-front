@@ -22,4 +22,8 @@ export const Button = styled.button`
   &:hover {
     background-color: ${C.PRIMARY_COLOR_DARK};
   }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 `

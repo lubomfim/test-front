@@ -4,9 +4,19 @@ import InputMask from 'react-input-mask'
 
 import * as S from './styled'
 
-export const Inputs = ({ placeholder, onFocus, onChange, value, name, type, label, mask }) => {
+export const Inputs = ({
+  placeholder,
+  onFocus,
+  onChange,
+  value,
+  name,
+  type,
+  label,
+  mask,
+  valid
+}) => {
   return (
-    <S.InputWrapper>
+    <S.InputWrapper valid={valid}>
       <S.Label htmlFor={name}>{label}</S.Label>
       <InputMask
         placeholder={placeholder}
@@ -18,8 +28,13 @@ export const Inputs = ({ placeholder, onFocus, onChange, value, name, type, labe
         id={name}
         mask={mask}
       />
+      {!valid && <S.InputError>Inválido</S.InputError>}
     </S.InputWrapper>
   )
+}
+
+Inputs.defaultProps = {
+  valid: true
 }
 
 Inputs.propTypes = {
@@ -29,5 +44,6 @@ Inputs.propTypes = {
   onChange: PropTypes.func,
   mark: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  name: PropTypes.string
+  name: PropTypes.string,
+  valid: PropTypes.bool
 }

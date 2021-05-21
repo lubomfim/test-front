@@ -5,13 +5,10 @@ import * as T from 'constants/styles/typography'
 
 export const InputWrapper = styled.div`
   margin-bottom: 25px;
-
-  &:last-child {
-    margin-bottom: 0px;
-  }
+  position: relative;
 
   & > input {
-    border: 1px solid ${C.GREY_MID_LIGHT};
+    border: 1px solid ${({ valid }) => (valid ? C.GREY_MID_LIGHT : C.INPUT_ERROR_COLOR)};
     transition: all 0.4s ease;
     padding: 14px 13px;
     ${T.BODY_TEXT_EXTRA_LARGE}
@@ -25,7 +22,7 @@ export const InputWrapper = styled.div`
       color: ${C.GREY_LIGHT};
     }
     &:focus {
-      border-color: ${C.INPUT_FOCUS_COLOR};
+      border-color: ${({ valid }) => (valid ? C.INPUT_FOCUS_COLOR : C.INPUT_ERROR_COLOR)};
     }
   }
 `
@@ -38,7 +35,9 @@ export const Label = styled.label`
 `
 export const Input = styled.input``
 
-export const InputError = styled.small`
+export const InputError = styled.p`
   color: ${C.INPUT_ERROR_COLOR};
-  ${T.BODY_TEXT_SMALL}
+  ${T.BODY_TEXT_SMALL};
+  position: absolute;
+  bottom: -19px;
 `
