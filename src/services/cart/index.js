@@ -1,12 +1,10 @@
 import { api } from 'services/api'
 
-import { BAG_ID } from 'constants/config'
-
-export const getProducts = async () => {
+export const getProducts = async (id) => {
   try {
-    const { data } = await api.get(BAG_ID)
+    const { data } = await api.get(id)
     return data
   } catch (err) {
-    console.log(err)
+    return err
   }
 }
