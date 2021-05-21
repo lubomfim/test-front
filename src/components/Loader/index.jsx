@@ -2,6 +2,8 @@ import React from 'react'
 
 import * as S from './styled'
 
-export const Loader = () => {
+const Loader = () => {
   return <S.Loader />
 }
+
+export default Loader

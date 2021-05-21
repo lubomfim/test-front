@@ -5,7 +5,7 @@ import { cardValuesData } from 'constants/data/components/cardValues'
 import * as S from './styled'
 import { convertMoney } from 'utils/convertMoney'
 
-export const CardValues = ({ prices: { shippingTotal, subTotal, total, discount } }) => {
+const CardValues = ({ prices: { shippingTotal, subTotal, total, discount } }) => {
   return (
     <S.CardValuesWrapper>
       <S.CardValuesItem>
@@ -36,3 +36,5 @@ CardValues.propTypes = {
     discount: PropTypes.number.isRequired
   })
 }
+
+export default CardValues

@@ -3,18 +3,16 @@ import PropTypes from 'prop-types'
 
 import * as S from './styled'
 import { convertMoney } from 'utils/convertMoney'
+import { splitString } from 'utils/splitString'
 
-export const CardProduct = ({
+const CardProduct = ({
   product: {
     name,
     imageObjects,
-    priceSpecification: { price },
-    onClick
+    priceSpecification: { price }
   },
   hidePrice
 }) => {
-  const productName = name.length > 65 ? name.split('-')[0] : name
-
   return (
     <S.CardProductItem>
       <S.CardProductImgWrapper hidePrice={hidePrice}>
@@ -26,7 +24,7 @@ export const CardProduct = ({
         <S.CardProductImg src={imageObjects[0].thumbnail} alt={name} />
       </S.CardProductImgWrapper>
       <S.CardProductText>
-        <S.CardProductName>{productName}</S.CardProductName>
+        <S.CardProductName>{splitString(name, 65, 0)}</S.CardProductName>
         {!hidePrice && <S.CardProductPrice>{convertMoney(price)}</S.CardProductPrice>}
       </S.CardProductText>
     </S.CardProductItem>
@@ -43,3 +41,5 @@ CardProduct.propTypes = {
   }),
   hidePrice: PropTypes.bool
 }
+
+export default CardProduct

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import * as S from './styled'
 import { headerData } from 'constants/data/components/header/'
 
-export const Header = ({ step }) => {
+const Header = ({ step }) => {
   return (
     <S.Header>
       <S.HeaderList>
@@ -23,3 +23,5 @@ export const Header = ({ step }) => {
 Header.propTypes = {
   step: PropTypes.number.isRequired
 }
+
+export default Header

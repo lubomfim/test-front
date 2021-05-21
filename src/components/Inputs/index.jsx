@@ -4,17 +4,7 @@ import InputMask from 'react-input-mask'
 
 import * as S from './styled'
 
-export const Inputs = ({
-  placeholder,
-  onFocus,
-  onChange,
-  value,
-  name,
-  type,
-  label,
-  mask,
-  valid
-}) => {
+const Inputs = ({ placeholder, onFocus, onChange, value, name, type, label, mask, valid }) => {
   return (
     <S.InputWrapper valid={valid}>
       <S.Label htmlFor={name}>{label}</S.Label>
@@ -47,3 +37,5 @@ Inputs.propTypes = {
   name: PropTypes.string,
   valid: PropTypes.bool
 }
+
+export default Inputs

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import * as S from './styled'
 import { useHistory } from 'react-router'
 
-export const Button = ({ text, path, disabled }) => {
+const Button = ({ text, path, disabled }) => {
   const history = useHistory()
 
   const handleClick = () => {
@@ -22,3 +22,5 @@ Button.propTypes = {
   path: PropTypes.string.isRequired,
   disabled: PropTypes.bool
 }
+
+export default Button

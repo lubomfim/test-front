@@ -4,7 +4,7 @@ import { paymentStatus } from 'constants/data/components/paymentStatus'
 
 import * as S from './styled'
 
-export const StatusPayment = ({ status }) => {
+const StatusPayment = ({ status }) => {
   const { icon, text, color } = paymentStatus[status]
   return (
     <S.PaymentStatusWrapper>
@@ -19,3 +19,5 @@ export const StatusPayment = ({ status }) => {
 StatusPayment.propTypes = {
   status: PropTypes.string.isRequired
 }
+
+export default StatusPayment
