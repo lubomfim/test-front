@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useProductsContext } from 'contexts/checkout'
 
-import { CardValues } from 'components/CardValues'
-import { ContentWrapper } from 'components/ContentWrapper'
-import { Loader } from 'components/Loader'
-import { Wrapper } from 'components/Wrapper'
-import { paymentData } from 'constants/data/pages/payment'
-import { Button } from 'components/Buttons'
-import { Header } from 'components/Header'
+import Header from 'components/Header'
+import CardValues from 'components/CardValues'
+import ContentWrapper from 'components/ContentWrapper'
+import Loader from 'components/Loader'
+import Wrapper from 'components/Wrapper'
+import Button from 'components/Buttons'
+import Inputs from 'components/Inputs'
 
-import * as S from './styled'
-import { Inputs } from 'components/Inputs'
+import { paymentData } from 'constants/data/pages/payment'
 import { valCardNumber, valCardName, valCardDate, valCvv } from 'utils/validationCard'
 
+import * as S from './styled'
 const Payment = () => {
   const { isLoading, prices, isValidated, setIsValidated, setPaymentInfo, paymentInfo } =
     useProductsContext()
@@ -38,42 +38,45 @@ const Payment = () => {
     }
   })
 
-  const handleChange = (type, value) => {
-    const targetValue = value.target.value
-    const newValue = targetValue.replaceAll('.', '')
-
-    switch (type) {
-      case 'cardNumber':
-        switchValidation(type, targetValue, valCardNumber(newValue))
-        break
-      case 'cardName':
-        switchValidation(type, targetValue, valCardName(targetValue))
-        break
-      case 'cardDate':
-        switchValidation(type, targetValue, valCardDate(targetValue))
-        break
-      case 'cvv':
-        switchValidation(type, targetValue, valCvv(targetValue))
-        break
-      default:
-        return
-    }
-
-    setPaymentInfo({
-      ...paymentInfo,
-      [type]: targetValue
-    })
-  }
-
-  const switchValidation = (type, value, bol) => {
-    setData({
+  const switchValidation = useCallback((type, value, bol) => {
+    setData((data) => ({
       ...data,
       [type]: {
         value: value,
         valid: bol
       }
-    })
-  }
+    }))
+  }, [])
+
+  const handleChange = useCallback(
+    (type, value) => {
+      const targetValue = value.target.value
+      const newValue = targetValue.replaceAll('.', '')
+
+      switch (type) {
+        case 'cardNumber':
+          switchValidation(type, targetValue, valCardNumber(newValue))
+          break
+        case 'cardName':
+          switchValidation(type, targetValue, valCardName(targetValue))
+          break
+        case 'cardDate':
+          switchValidation(type, targetValue, valCardDate(targetValue))
+          break
+        case 'cvv':
+          switchValidation(type, targetValue, valCvv(targetValue))
+          break
+        default:
+          return
+      }
+
+      setPaymentInfo({
+        ...paymentInfo,
+        [type]: targetValue
+      })
+    },
+    [paymentInfo, setPaymentInfo, switchValidation]
+  )
 
   useEffect(() => {
     const { cardNumber, cardDate, cardName, cvv } = data

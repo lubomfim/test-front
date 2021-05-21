@@ -1,15 +1,15 @@
 import React from 'react'
 
-import { bagData } from 'constants/data/pages/cart'
+import ContentWrapper from 'components/ContentWrapper'
+import CardProduct from 'components/ProductItem'
+import CardValues from 'components/CardValues'
+import Header from 'components/Header'
+import Wrapper from 'components/Wrapper'
+import Loader from 'components/Loader'
+import Button from 'components/Buttons'
 
-import { Wrapper } from 'components/Wrapper'
-import { ContentWrapper } from 'components/ContentWrapper'
-import { Loader } from 'components/Loader'
-import { CardProduct } from 'components/ProductItem'
-import { CardValues } from 'components/CardValues'
-import { Button } from 'components/Buttons'
-import { Header } from 'components/Header'
 import { useProductsContext } from 'contexts/checkout'
+import { bagData } from 'constants/data/pages/cart'
 
 const Cart = () => {
   const { isLoading, prices, products } = useProductsContext()

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
 
-import { Header } from 'components/Header'
-import { Wrapper } from 'components/Wrapper'
-import { ContentWrapper } from 'components/ContentWrapper'
-import { Loader } from 'components/Loader'
-import { CardProduct } from 'components/ProductItem'
-import { CardValues } from 'components/CardValues'
-import { useProductsContext } from 'contexts/checkout'
+import Header from 'components/Header'
+import CardProduct from 'components/ProductItem'
+import CardValues from 'components/CardValues'
+import ContentWrapper from 'components/ContentWrapper'
+import Loader from 'components/Loader'
+import Wrapper from 'components/Wrapper'
+import StatusPayment from 'components/PaymentStatus'
 
+import { useProductsContext } from 'contexts/checkout'
 import { paidData } from 'constants/data/pages/paid'
-import { StatusPayment } from 'components/PaymentStatus'
 import { useHistory } from 'react-router'
 import { maskNumber } from 'utils/maskNumber'
 
