@@ -8,11 +8,11 @@ import Wrapper from 'components/Wrapper'
 import Loader from 'components/Loader'
 import Button from 'components/Buttons'
 
-import { useProductsContext } from 'contexts/checkout'
+import { useCheckoutContext } from 'contexts/CheckoutContext/checkout'
 import { bagData } from 'constants/data/pages/cart'
 
 const Cart = () => {
-  const { isLoading, prices, products } = useProductsContext()
+  const { isLoading, prices, products } = useCheckoutContext()
 
   return (
     <React.Fragment>

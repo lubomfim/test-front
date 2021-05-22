@@ -8,7 +8,7 @@ import Loader from 'components/Loader'
 import Wrapper from 'components/Wrapper'
 import StatusPayment from 'components/PaymentStatus'
 
-import { useProductsContext } from 'contexts/checkout'
+import { useCheckoutContext } from 'contexts/CheckoutContext/checkout'
 import { paidData } from 'constants/data/pages/paid'
 import { useHistory } from 'react-router'
 import { maskNumber } from 'utils/maskNumber'
@@ -16,7 +16,7 @@ import { maskNumber } from 'utils/maskNumber'
 import * as S from './styled'
 
 const Paid = () => {
-  const { isLoading, prices, products, isValidated, paymentInfo } = useProductsContext()
+  const { isLoading, prices, products, isValidated, paymentInfo } = useCheckoutContext()
   const { cardName, cardNumber, cardDate } = paymentInfo
   const history = useHistory()
 

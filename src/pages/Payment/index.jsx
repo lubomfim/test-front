@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { useProductsContext } from 'contexts/checkout'
+import { useCheckoutContext } from 'contexts/CheckoutContext/checkout'
 
 import Header from 'components/Header'
 import CardValues from 'components/CardValues'
@@ -15,7 +15,7 @@ import { valCardNumber, valCardName, valCardDate, valCvv } from 'utils/validatio
 import * as S from './styled'
 const Payment = () => {
   const { isLoading, prices, isValidated, setIsValidated, setPaymentInfo, paymentInfo } =
-    useProductsContext()
+    useCheckoutContext()
 
   const { cardNumber, cvv, cardName, cardDate } = paymentData
 
