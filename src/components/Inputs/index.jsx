@@ -4,14 +4,13 @@ import InputMask from 'react-input-mask'
 
 import * as S from './styled'
 
-const Inputs = ({ placeholder, onFocus, onChange, value, name, type, label, mask, valid }) => {
+const Inputs = ({ placeholder, onChange, value, name, type, label, mask, valid }) => {
   return (
     <S.InputWrapper valid={valid}>
       <S.Label htmlFor={name}>{label}</S.Label>
       <InputMask
         placeholder={placeholder}
         onChange={onChange}
-        onFocus={onFocus}
         value={value}
         name={name}
         type={type}
@@ -30,7 +29,6 @@ Inputs.defaultProps = {
 Inputs.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  onFocus: PropTypes.func,
   onChange: PropTypes.func,
   mark: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

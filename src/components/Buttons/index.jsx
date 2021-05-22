@@ -6,12 +6,8 @@ import { useHistory } from 'react-router'
 const Button = ({ text, path, disabled }) => {
   const history = useHistory()
 
-  const handleClick = () => {
-    history.push(`/checkout/${path}`)
-  }
-
   return (
-    <S.Button onClick={handleClick} disabled={disabled}>
+    <S.Button onClick={() => history.push(`/checkout/${path}`)} disabled={disabled}>
       {text}
     </S.Button>
   )

@@ -1,4 +1,3 @@
-import ContentTitle from 'components/ContentTitle'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -7,15 +6,15 @@ import * as S from './styled'
 const ContentWrapper = ({ children, title }) => {
   return (
     <div>
-      {title && <ContentTitle text={title} />}
+      <S.ContentTitle>{title}</S.ContentTitle>
       <S.ContentWrapper>{children}</S.ContentWrapper>
     </div>
   )
 }
 
 ContentWrapper.propTypes = {
-  children: PropTypes.node,
-  title: PropTypes.string
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired
 }
 
 export default ContentWrapper

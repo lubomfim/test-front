@@ -19,6 +19,8 @@ export const Button = styled.button`
   box-shadow: inset 0px -3px 0px ${C.PRIMARY_COLOR_DARK};
   cursor: pointer;
 
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
+
   &:hover {
     background-color: ${C.PRIMARY_COLOR_DARK};
   }
