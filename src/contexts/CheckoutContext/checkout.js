@@ -2,9 +2,9 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { getProducts } from 'services/cart'
 
-const ProductsContext = createContext()
+export const CheckoutContext = createContext()
 
-export const ProductsProvider = ({ children }) => {
+export const CheckoutProvider = ({ children }) => {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [prices, setPrices] = useState({})
@@ -37,17 +37,17 @@ export const ProductsProvider = ({ children }) => {
     paymentInfo
   }
 
-  return <ProductsContext.Provider value={store}>{children}</ProductsContext.Provider>
+  return <CheckoutContext.Provider value={store}>{children}</CheckoutContext.Provider>
 }
 
-ProductsProvider.propTypes = {
+CheckoutProvider.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export const useProductsContext = () => {
-  const context = useContext(ProductsContext)
+export const useCheckoutContext = () => {
+  const context = useContext(CheckoutContext)
   if (context === undefined) {
-    throw new Error('useProductsContext must be used within a ProductsProvider')
+    throw new Error('useCheckoutContext must be used within a CheckoutProvider')
   }
   return context
 }
