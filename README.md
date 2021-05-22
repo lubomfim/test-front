@@ -2,7 +2,7 @@
 
 Projeto desenvolvido para teste front-end.
 
-![Vercel](https://vercelbadge.vercel.app/api/lubomfim/test-front)
+[![Vercel](https://vercelbadge.vercel.app/api/lubomfim/test-front)](https://test-front-git-master-lubomfim.vercel.app/checkout/cart)
 
 ## 🎯 Objetivo do projeto
 
